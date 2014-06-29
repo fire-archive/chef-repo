@@ -13,3 +13,18 @@ git "/tmp/groove-#{stamp}" do
   repository "https://github.com/andrewrk/libgroove"
   reference "master"
 end
+
+include_recipe "homebrew"
+
+package 'cmake' do
+  action :install
+end
+
+package 'libav' do
+  action :install
+end
+
+package 'chromaprint' do
+  action :install
+end
+
