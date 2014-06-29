@@ -6,3 +6,10 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+
+stamp = `date +%s`
+
+git "/tmp/groove-#{stamp}" do
+  repository "https://github.com/andrewrk/libgroove"
+  reference "master"
+end
