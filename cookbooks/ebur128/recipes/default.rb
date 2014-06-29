@@ -19,6 +19,10 @@ package 'cmake' do
   action :install
 end
 
+package 'speex' do
+  action :install
+end
+
 git "#{build_working}" do
   repository "https://github.com/jiixyj/libebur128"
   reference "master"
