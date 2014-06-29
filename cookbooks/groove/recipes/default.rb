@@ -46,7 +46,6 @@ script 'build' do
   cwd "#{groove_working}/Build"
   code <<-EOH
   cmake -G Ninja ../ && ninja && ninja install
-  ninja install
   EOH
 end
 
