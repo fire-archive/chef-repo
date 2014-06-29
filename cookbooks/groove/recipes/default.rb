@@ -7,11 +7,11 @@
 # All rights reserved - Do Not Redistribute
 #
 
-stamp = `date +%s`
-groove_working = "/Users/fire/groove"
+stamp = `date +%s`.strip
+groove_working = "/tmp/groove-#{stamp}"
 
 git "#{groove_working}" do
-  repository "https://github.com/andrewrk/libgroove"
+  repository "https://github.com/fire/libgroove.git"
   reference "master"
 end
 
@@ -40,9 +40,17 @@ end
 directory "#{groove_working}/Build" do
 end
 
-execute 'build' do
+script 'build' do
+  interpreter "bash"
+  user "fire"
   cwd "#{groove_working}/Build"
-  command "cmake -G Ninja ../"
-  command "ninja "
+  code <<-EOH
+  cmake -G Ninja ../ && ninja && ninja install
+  ninja install
+  EOH
 end
- 
+
+directory "#{groove_working}" do
+  recursive true
+  action :delete
+end
