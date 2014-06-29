@@ -64,3 +64,7 @@ Next Steps
 ==========
 
 Read the README file in each of the subdirectories for more information about what goes in those directories.
+
+This command runs the cookbooks locally
+
+    chef-client -z -o $COOKBOOK
